@@ -16,8 +16,8 @@ It also displays or saves plots about its performance. All functionality is opti
 
 - numpy
 - pyyaml
-- evo-1 // Fork from [evo](https://github.com/MichaelGrupp/evo)
-- open3d-python
+- evo-1 (Install this from source from [evo-1](https://github.com/ToniRV/evo-1.git) with matplotlib<=3.4.0)
+- open3d
 - plotly
 
 > We strongly recommend setting a new virtual environment to avoid conflicts with system-wide installations:
@@ -241,7 +241,7 @@ Yet, locally, you can use `evo_config` to allow plotting plots separately for ad
 ```
 
 - [2] A. Rosinol, M. Abate, Y. Chang, L. Carlone, [**Kimera: an Open-Source Library for Real-Time Metric-Semantic Localization and Mapping**](https://arxiv.org/abs/1910.02490). IEEE Intl. Conf. on Robotics and Automation (ICRA), 2020. [arXiv:1910.02490](https://arxiv.org/abs/1910.02490).
- 
+
  ```bibtex
  @InProceedings{Rosinol20icra-Kimera,
    title = {Kimera: an Open-Source Library for Real-Time Metric-Semantic Localization and Mapping},

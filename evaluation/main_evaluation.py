@@ -1,20 +1,25 @@
 #!/usr/bin/env python
 
 from __future__ import print_function
-import glog as log
+
 import os
+# Ignore warnings from matplotlib...
+import warnings
+
+import glog as log
 from ruamel import yaml
 from tqdm import tqdm
 
-# Ignore warnings from matplotlib...
-import warnings
 warnings.filterwarnings("ignore")
 
 # This is to avoid using tkinter
 import matplotlib
-matplotlib.use('Agg')
 
-from evaluation.evaluation_lib import DatasetEvaluator, DatasetRunner, aggregate_ape_results
+matplotlib.use("Agg")
+
+from evaluation.evaluation_lib import (DatasetEvaluator, DatasetRunner,
+                                       aggregate_ape_results)
+
 
 def run(args):
     # Get experiment information from yaml file.
@@ -25,11 +30,13 @@ def run(args):
     dataset_evaluator = DatasetEvaluator(experiment_params, args, extra_flagfile_path)
     dataset_evaluator.evaluate()
     # Aggregate results in results directory
-    aggregate_ape_results(os.path.expandvars(experiment_params['results_dir']))
+    aggregate_ape_results(os.path.expandvars(experiment_params["results_dir"]))
     return True
+
 
 def parser():
     import argparse
+
     basic_desc = "Full evaluation of SPARK VIO pipeline (APE trans + RPE trans + RPE rot) metric app"
 
     shared_parser = argparse.ArgumentParser(add_help=True, description="{}".format(basic_desc))
@@ -38,36 +45,43 @@ def parser():
     evaluation_opts = shared_parser.add_argument_group("algorithm options")
     output_opts = shared_parser.add_argument_group("output options")
 
-    input_opts.add_argument("experiments_path", type=argparse.FileType('r'),
-                            help="Path to the yaml file with experiments settings.",
-                            default="./experiments.yaml")
+    input_opts.add_argument(
+        "experiments_path",
+        type=argparse.FileType("r"),
+        help="Path to the yaml file with experiments settings.",
+        default="./experiments.yaml",
+    )
 
-    evaluation_opts.add_argument("-r", "--run_pipeline", action="store_true",
-                                 help="Run vio?")
-    evaluation_opts.add_argument("-a", "--analyze_vio", action="store_true",
-                                 help="Analyze vio, compute APE and RPE")
+    evaluation_opts.add_argument("-r", "--run_pipeline", action="store_true", help="Run vio?")
+    evaluation_opts.add_argument("-a", "--analyze_vio", action="store_true", help="Analyze vio, compute APE and RPE")
 
     output_opts.add_argument(
-        "--plot", action="store_true", help="show plot window",)
-    output_opts.add_argument("--save_plots", action="store_true",
-                             help="Save plots?")
-    output_opts.add_argument("--write_website", action="store_true",
-                             help="Write website with results?")
-    output_opts.add_argument("--save_boxplots", action="store_true",
-                             help="Save boxplots?")
-    output_opts.add_argument("--save_results", action="store_true",
-                             help="Save results?")
-    output_opts.add_argument("-v", "--verbose_sparkvio", action="store_true",
-                             help="Make SparkVIO log all verbosity to console. Useful for debugging if a run failed.")
+        "--plot",
+        action="store_true",
+        help="show plot window",
+    )
+    output_opts.add_argument("--save_plots", action="store_true", help="Save plots?")
+    output_opts.add_argument("--write_website", action="store_true", help="Write website with results?")
+    output_opts.add_argument("--save_boxplots", action="store_true", help="Save boxplots?")
+    output_opts.add_argument("--save_results", action="store_true", help="Save results?")
+    output_opts.add_argument(
+        "-v",
+        "--verbose_sparkvio",
+        action="store_true",
+        help="Make SparkVIO log all verbosity to console. Useful for debugging if a run failed.",
+    )
 
     main_parser = argparse.ArgumentParser(description="{}".format(basic_desc))
     sub_parsers = main_parser.add_subparsers(dest="subcommand")
     sub_parsers.required = True
     return shared_parser
 
-import argcomplete
+
 import sys
-if __name__ == '__main__':
+
+import argcomplete
+
+if __name__ == "__main__":
     log.setLevel("INFO")
     parser = parser()
     argcomplete.autocomplete(parser)

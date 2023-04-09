@@ -6,7 +6,7 @@ dataset_dir: '$HOME/datasets/EuRoC'
 
 datasets_to_run:
  - name: V1_01_easy
-   use_lcd: true
+   use_lcd: false
    segments: [1]
    pipelines: ['Euroc']
    discard_n_start_poses: 0
