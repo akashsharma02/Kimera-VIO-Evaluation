@@ -1,7 +1,7 @@
-executable_path: '$HOME/Code/Kimera-VIO/build/stereoVIOEuroc'
-vocabulary_path: '$HOME/Code/Kimera-VIO/vocabulary/ORBvoc.yml'
-results_dir: '$HOME/Code/Kimera-VIO-Evaluation/results'
-params_dir: '$HOME/Code/Kimera-VIO/params'
+executable_path: '/home/akashsharma/workspace/cloned/Kimera-VIO/build/stereoVIOEuroc'
+vocabulary_path: '/home/akashsharma/workspace/cloned/Kimera-VIO/vocabulary/ORBvoc.yml'
+results_dir: '/home/akashsharma/workspace/cloned/Kimera-VIO-Evaluation/results'
+params_dir: '/home/akashsharma/workspace/cloned/Kimera-VIO/params'
 dataset_dir: '$HOME/datasets/EuRoC'
 
 datasets_to_run:

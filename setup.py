@@ -1,4 +1,5 @@
 from setuptools import setup
+
 import fastentrypoints
 
 setup(
@@ -16,7 +17,7 @@ setup(
         "tqdm",
         "ruamel.yaml",
         "evo-1",
-        "open3d-python",
+        "open3d",
         "plotly",
         "chart_studio",
         "pandas",
